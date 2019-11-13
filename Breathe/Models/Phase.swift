@@ -11,7 +11,7 @@ import UIKit
 
 struct Phase: Codable {
     let type: PhaseType
-    let duration: Int
+    let duration: Double
     let color: String
     
     var parsedColor: UIColor {
