@@ -9,10 +9,21 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    @IBOutlet private weak var breatheView: BreatheView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let dataPath = Bundle.main.path(forResource: "Data", ofType: "json")
+        
+        let url = URL(fileURLWithPath: dataPath!)
+        
+        let jsonData = try! Data(contentsOf: url)
+        
+        let phases = try! JSONDecoder().decode([Phase].self, from: jsonData)
+        
+        breatheView.config(with: phases)
     }
 
 
